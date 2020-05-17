@@ -1,0 +1,44 @@
+version: '3'
+services:
+  ubuntu-gnome:
+    build: Ubuntu-Gnome-vnc/.
+    privileged: true
+  ubuntu-chrome:
+    build: Ubuntu-Chrome/.
+    privileged: true
+  ubuntu-firefox:
+    build: Ubuntu-Firefox/.
+    privileged: true
+  guacd:
+    container_name: guacd_compose
+    image: guacamole/guacd
+  guacamole:
+    image: guacamole/guacamole
+    depends_on:
+    - guacd
+    - mysql
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+    environment:
+      MYSQL_HOSTNAME: mysql
+      GUACD_HOSTNAME: guacd
+      MYSQL_DATABASE: guac
+      MYSQL_USER: guac_user
+      MYSQL_PASSWORD: password
+    links:
+    - guacd
+  mysql:
+    image: "mysql"
+    ports:
+      - "3306:3306"
+    environment:
+       MYSQL_ROOT_PASSWORD: root_pwd
+       MYSQL_DATABASE: guac
+       MYSQL_USER: guac_user
+       MYSQL_PASSWORD: password
+    volumes:
+       - db_data:/var/lib/mysql
+volumes:
+    db_data: {}

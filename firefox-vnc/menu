@@ -1,0 +1,10 @@
+[begin] (fluxbox)
+
+[submenu] (Favourites) {}
+         [exec] (Xterm) {xterm} &lt;&gt;
+         [exec] (Terminal) {mate-terminal} &lt;&gt;
+         [exec] (Chrome) {google-chrome} &lt;&gt;
+[end]
+
+[include] (/etc/X11/fluxbox/fluxbox-menu)
+[end]

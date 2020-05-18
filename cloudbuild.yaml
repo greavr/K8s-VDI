@@ -3,14 +3,14 @@ steps:
   args: ['build', '-t', 'gcr.io/rgreaves-sandbox/ubuntu-gnome-vnc:$REVISION_ID', '.']
   dir: '/workspace/ubuntu-gnome-vnc/'
 - name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/rgreaves-debugger/ubuntu-gnome-vnc:$REVISION_ID"]
+- name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/rgreaves-sandbox/ubuntu-firefox:$REVISION_ID', '.']
   dir: '/workspace/ubuntu-firefox/'
 - name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/rgreaves-debugger/ubuntu-firefox:$REVISION_ID"]
+- name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/rgreaves-sandbox/ubuntu-chrome:$REVISION_ID', '.']
   dir: '/workspace/ubuntu-chrome/'
-- name: 'gcr.io/cloud-builders/docker'
-  args: ["push", "gcr.io/rgreaves-debugger/ubuntu-gnome-vnc:$REVISION_ID"]
-- name: 'gcr.io/cloud-builders/docker'
-  args: ["push", "gcr.io/rgreaves-debugger/ubuntu-firefox:$REVISION_ID"]
 - name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/rgreaves-debugger/ubuntu-chrome:$REVISION_ID"]

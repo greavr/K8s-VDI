@@ -14,3 +14,4 @@ steps:
   dir: '/workspace/ubuntu-chrome/'
 - name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/rgreaves-sandbox/ubuntu-chrome:$REVISION_ID"]
+timeout: 800s

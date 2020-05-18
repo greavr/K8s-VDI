@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-vdi
+  labels:
+    app: k8s-vdi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-vdi
+  template:
+    metadata:
+      labels:
+        app: k8s-vdi
+    spec:
+      containers:
+        - name: python-front-end
+          image: gcr.io/rgreaves-debugger/front-end
+          env:
+          - name: GCLOUD_PROJECT
+            value: "rgreaves-debugger"
+          ports:
+          - containerPort: 5000
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 3
+            periodSeconds: 3

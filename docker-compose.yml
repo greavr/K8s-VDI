@@ -1,5 +1,8 @@
 version: '3'
 services:
+  freeciv-client:
+    build: freeciv-client/.
+    privileged: true
   ubuntu-gnome:
     build: Ubuntu-Gnome-vnc/.
     privileged: true

@@ -14,4 +14,9 @@ steps:
   dir: '/workspace/ubuntu-chrome/'
 - name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$PROJECT_ID/ubuntu-chrome:$SHORT_SHA"]
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/xvnc4-chrome:$SHORT_SHA', '.']
+  dir: '/workspace/xvnc4-chrome/'
+- name: 'gcr.io/cloud-builders/docker'
+  args: ["push", "gcr.io/$PROJECT_ID/xvnc4-chrome:$SHORT_SHA"]
 timeout: 800s

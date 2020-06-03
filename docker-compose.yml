@@ -1,10 +1,24 @@
 version: '3'
 services:
+  rdp-chrome:
+    build: rdp-chrome/.
+    privileged: true
+    ports:
+      - "3389:3389"
   freeciv-client:
     build: freeciv-client/.
     privileged: true
+  xvnc4-chrome:
+    build: xvnc4-chrome/.
+    privileged: true
   ubuntu-chrome:
     build: ubuntu-chrome/.
+    privileged: true
+  ubuntu-firefox:
+    build: ubuntu-firefox/.
+    privileged: true
+  ubuntu-gnome:
+    build: ubuntu-gnome-vnc/.
     privileged: true
   guacd:
     container_name: guacd_compose
@@ -34,8 +48,6 @@ services:
        MYSQL_DATABASE: guac
        MYSQL_USER: guac_user
        MYSQL_PASSWORD: password
-    volumes:
-       - db_data:/var/lib/mysql
   mysql-bootstrap:
     build: mysql-bootstrap/.
     depends_on:
@@ -45,7 +57,3 @@ services:
       mysql_db: guac
       mysql_user: guac_user
       mysql_pwd: password
-
-
-volumes:
-    db_data: {}

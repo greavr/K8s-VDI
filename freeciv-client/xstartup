@@ -9,4 +9,4 @@ unset DBUS_SESSION_BUS_ADDRESS
 xsetroot -solid grey
 vncconfig -iconic &
 
-freeciv-gtk2 &
+/usr/games/freeciv-gtk2  &

@@ -9,4 +9,4 @@ unset DBUS_SESSION_BUS_ADDRESS
 xsetroot -solid grey
 vncconfig -iconic &
 
-google-chrome --use-gl=swiftshader &
+google-chrome --use-gl=swiftshader --disable-gpu --no-first-run &
